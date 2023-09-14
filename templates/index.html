@@ -1,108 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Game || Web Mentor</title>
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>2 Player Chess Game</title>
     <link rel="stylesheet" href="{{ url_for('static',  filename='style.css') }}">
-</head>
-<body>
-    <div id="game">
-        <!-- row eight -->
-        <div class="cellprefix">8</div>
-        <div class="gamecell" id="1_8"></div>
-        <div class="gamecell grey" id="2_8"></div>
-        <div class="gamecell" id="3_8"></div>
-        <div class="gamecell grey" id="4_8"></div>
-        <div class="gamecell" id="5_8"></div>
-        <div class="gamecell grey" id="6_8"></div>
-        <div class="gamecell" id="7_8"></div>
-        <div class="gamecell grey" id="8_8"></div>
-        <!-- row seven -->
-        <div class="cellprefix">7</div>
-        <div class="gamecell grey" id="1_7"></div>
-        <div class="gamecell" id="2_7"></div>
-        <div class="gamecell grey" id="3_7"></div>
-        <div class="gamecell" id="4_7"></div>
-        <div class="gamecell grey" id="5_7"></div>
-        <div class="gamecell" id="6_7"></div>
-        <div class="gamecell grey" id="7_7"></div>
-        <div class="gamecell" id="8_7"></div>
-        <!-- row six -->
-        <div class="cellprefix">6</div>
-        <div class="gamecell" id="1_6"></div>
-        <div class="gamecell grey" id="2_6"></div>
-        <div class="gamecell" id="3_6"></div>
-        <div class="gamecell grey" id="4_6"></div>
-        <div class="gamecell" id="5_6"></div>
-        <div class="gamecell grey" id="6_6"></div>
-        <div class="gamecell" id="7_6"></div>
-        <div class="gamecell grey" id="8_6"></div>
-        <!-- row five -->
-        <div class="cellprefix">5</div>
-        <div class="gamecell grey" id="1_5"></div>
-        <div class="gamecell" id="2_5"></div>
-        <div class="gamecell grey" id="3_5"></div>
-        <div class="gamecell" id="4_5"></div>
-        <div class="gamecell grey" id="5_5"></div>
-        <div class="gamecell" id="6_5"></div>
-        <div class="gamecell grey" id="7_5"></div>
-        <div class="gamecell" id="8_5"></div>
-        <!-- row four -->
-        <div class="cellprefix">4</div>
-        <div class="gamecell" id="1_4"></div>
-        <div class="gamecell grey" id="2_4"></div>
-        <div class="gamecell" id="3_4"></div>
-        <div class="gamecell grey" id="4_4"></div>
-        <div class="gamecell" id="5_4"></div>
-        <div class="gamecell grey" id="6_4"></div>
-        <div class="gamecell" id="7_4"></div>
-        <div class="gamecell grey" id="8_4"></div>
-        <!-- row three -->
-        <div class="cellprefix">3</div>
-        <div class="gamecell grey" id="1_3"></div>
-        <div class="gamecell" id="2_3"></div>
-        <div class="gamecell grey" id="3_3"></div>
-        <div class="gamecell" id="4_3"></div>
-        <div class="gamecell grey" id="5_3"></div>
-        <div class="gamecell" id="6_3"></div>
-        <div class="gamecell grey" id="7_3"></div>
-        <div class="gamecell" id="8_3"></div>
-        <!-- row two -->
-        <div class="cellprefix">2</div>
-        <div class="gamecell" id="1_2"></div>
-        <div class="gamecell grey" id="2_2"></div>
-        <div class="gamecell" id="3_2"></div>
-        <div class="gamecell grey" id="4_2"></div>
-        <div class="gamecell" id="5_2"></div>
-        <div class="gamecell grey" id="6_2"></div>
-        <div class="gamecell" id="7_2"></div>
-        <div class="gamecell grey" id="8_2"></div>
-        <!-- row one -->
-        <div class="cellprefix">1</div>
-        <div class="gamecell grey" id="1_1"></div>
-        <div class="gamecell" id="2_1"></div>
-        <div class="gamecell grey" id="3_1"></div>
-        <div class="gamecell" id="4_1"></div>
-        <div class="gamecell grey" id="5_1"></div>
-        <div class="gamecell" id="6_1"></div>
-        <div class="gamecell grey" id="7_1"></div>
-        <div class="gamecell" id="8_1"></div>
-        <div class="cellprefix"></div>
-        <div class="cellprefix">a</div>
-        <div class="cellprefix">b</div>
-        <div class="cellprefix">c</div>
-        <div class="cellprefix">d</div>
-        <div class="cellprefix">e</div>
-        <div class="cellprefix">f</div>
-        <div class="cellprefix">g</div>
-        <div class="cellprefix">h</div>
-        <div id="turn">It's White's Turn</div>
-    </div>
+{% endblock %}
 
+{% block body %}
+    <h1>Chess</h1>
+    <br/><br/>
+    <!-- #region -->
+    <!-- Row number 1 -->
+    <div class="squareLight" id="A8" style="left: 15px;"></div>
+    <p style="position: absolute; top: 110px; left: 20px; color: #eeeed2; font-size: 25px;">8</p>
+    <div class="squareDark" id="A7" style="top: 214px; left: 15px;"></div>
+    <p style="position: absolute; top: 210px; left: 20px; color: #eeeed2; font-size: 25px;">7</p>
+    <div class="squareLight" id="A6" style="top: 314px; left: 15px;"></div>
+    <p style="position: absolute; top: 310px; left: 20px; color: #eeeed2; font-size: 25px;">6</p>
+    <div class="squareDark" id="A5" style="top: 414px; left: 15px;"></div>
+    <p style="position: absolute; top: 410px; left: 20px; color: #eeeed2; font-size: 25px;">5</p>
+    <div class="squareLight" id="A4" style="top: 514px; left: 15px;"></div>
+    <p style="position: absolute; top: 510px; left: 20px; color: #eeeed2; font-size: 25px;">4</p>
+    <div class="squareDark" id="A3" style="top: 614px; left: 15px;"></div>
+    <p style="position: absolute; top: 610px; left: 20px; color: #eeeed2; font-size: 25px;">3</p>
+    <div class="squareLight" id="A2" style="top: 714px; left: 15px;"></div>
+    <p style="position: absolute; top: 710px; left: 20px; color: #eeeed2; font-size: 25px;">2</p>
+    <div class="squareDark" id="A1" style="top: 814px; left: 15px;"></div>
+    <p style="position: absolute; top: 810px; left: 20px; color: #eeeed2; font-size: 25px;">1</p>
+    <p style="position: absolute; top: 880px; left: 90px; color: #eeeed2; font-size: 25px;">a</p>
+    <!-- Row number 2 -->
+    <div class="squareDark" id="B8" style="left: 115px;"></div>
+    <div class="squareLight" id="B7" style="top: 214px; left: 115px;"></div>
+    <div class="squareDark" id="B6" style="top: 314px; left: 115px";></div>
+    <div class="squareLight" id="B5" style="top: 414px; left: 115px;"></div>
+    <div class="squareDark" id="B4" style="top: 514px; left: 115px;"></div>
+    <div class="squareLight" id="B3" style="top: 614px; left: 115px;"></div>
+    <div class="squareDark" id="B2" style="top: 714px; left: 115px;"></div>
+    <div class="squareLight" id="B1" style="top: 814px; left: 115px;"></div>
+    <p style="position: absolute; top: 880px; left: 190px; color: #eeeed2; font-size: 25px;">b</p>
+    <!-- Row number 3 -->
+    <div class="squareLight" id="C8" style="left: 215px;"></div>
+    <div class="squareDark" id="C7" style="top: 214px; left: 215px;"></div>
+    <div class="squareLight" id="C6" style="top: 314px; left: 215px;"></div>
+    <div class="squareDark" id="C5" style="top: 414px; left: 215px;"></div>
+    <div class="squareLight" id="C4" style="top: 514px; left: 215px;"></div>
+    <div class="squareDark" id="C3" style="top: 614px; left: 215px;"></div>
+    <div class="squareLight" id="C2" style="top: 714px; left: 215px;"></div>
+    <div class="squareDark" id="C1" style="top: 814px; left: 215px;"></div>
+    <p style="position: absolute; top: 880px; left: 290px; color: #eeeed2; font-size: 25px;">c</p>
+    <!-- Row number 4 -->
+    <div class="squareDark" id="D8" style="left: 315px;"></div>
+    <div class="squareLight" id="D7" style="top: 214px; left: 315px;"></div>
+    <div class="squareDark" id="D6" style="top: 314px; left: 315px";></div>
+    <div class="squareLight" id="D5" style="top: 414px; left: 315px;"></div>
+    <div class="squareDark" id="D4" style="top: 514px; left: 315px;"></div>
+    <div class="squareLight" id="D3" style="top: 614px; left: 315px;"></div>
+    <div class="squareDark" id="D2" style="top: 714px; left: 315px;"></div>
+    <div class="squareLight" id="D1" style="top: 814px; left: 315px;"></div>
+    <p style="position: absolute; top: 880px; left: 390px; color: #eeeed2; font-size: 25px;">d</p>
+    <!-- Row number 5 -->
+    <div class="squareLight" id="E8" style="left: 415px;"></div>
+    <div class="squareDark" id="E7" style="top: 214px; left: 415px;"></div>
+    <div class="squareLight" id="E6" style="top: 314px; left: 415px;"></div>
+    <div class="squareDark" id="E5" style="top: 414px; left: 415px;"></div>
+    <div class="squareLight" id="E4" style="top: 514px; left: 415px;"></div>
+    <div class="squareDark" id="E3" style="top: 614px; left: 415px;"></div>
+    <div class="squareLight" id="E2" style="top: 714px; left: 415px;"></div>
+    <div class="squareDark" id="E1" style="top: 814px; left: 415px;"></div>
+    <p style="position: absolute; top: 880px; left: 490px; color: #eeeed2; font-size: 25px;">e</p>
+    <!-- Row number 6 -->
+    <div class="squareDark" id="F8" style="left: 515px;"></div>
+    <div class="squareLight" id="F7" style="top: 214px; left: 515px;"></div>
+    <div class="squareDark" id="F6" style="top: 314px; left: 515px";></div>
+    <div class="squareLight" id="F5" style="top: 414px; left: 515px;"></div>
+    <div class="squareDark" id="F4" style="top: 514px; left: 515px;"></div>
+    <div class="squareLight" id="F3" style="top: 614px; left: 515px;"></div>
+    <div class="squareDark" id="F2" style="top: 714px; left: 515px;"></div>
+    <div class="squareLight" id="F1" style="top: 814px; left: 515px;"></div>
+    <p style="position: absolute; top: 880px; left: 590px; color: #eeeed2; font-size: 25px;">f</p>
+    <!-- Row number 7 -->
+    <div class="squareLight" id="G8" style="left: 615px;"></div>
+    <div class="squareDark" id="G7" style="top: 214px; left: 615px;"></div>
+    <div class="squareLight" id="G6" style="top: 314px; left: 615px;"></div>
+    <div class="squareDark" id="G5" style="top: 414px; left: 615px;"></div>
+    <div class="squareLight" id="G4" style="top: 514px; left: 615px;"></div>
+    <div class="squareDark" id="G3" style="top: 614px; left: 615px;"></div>
+    <div class="squareLight" id="G2" style="top: 714px; left: 615px;"></div>
+    <div class="squareDark" id="G1" style="top: 814px; left: 615px;"></div>
+    <p style="position: absolute; top: 880px; left: 690px; color: #eeeed2; font-size: 25px;">g</p>
+    <!-- Row number 8 -->
+    <div class="squareDark" id="H8" style="left: 715px;"></div>
+    <div class="squareLight" id="H7" style="top: 214px; left: 715px;"></div>
+    <div class="squareDark" id="H6" style="top: 314px; left: 715px";></div>
+    <div class="squareLight" id="H5" style="top: 414px; left: 715px;"></div>
+    <div class="squareDark" id="H4" style="top: 514px; left: 715px;"></div>
+    <div class="squareLight" id="H3" style="top: 614px; left: 715px;"></div>
+    <div class="squareDark" id="H2" style="top: 714px; left: 715px;"></div>
+    <div class="squareLight" id="H1" style="top: 814px; left: 715px;"></div>
+    <p style="position: absolute; top: 880px; left: 790px; color: #eeeed2; font-size: 25px;">h</p>
+    <!-- endregion -->
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script src="{{ url_for('static',  filename='script.js') }}"></script>
-</body>
-</html>
+    <input id="text" style="position: absolute; top: 500px; left: 1000px;"></input>
+    <button id="submit" style="position: absolute; top: 500px; left: 1200px;">Submit</button>
+    <script>
+        // Setup the board
+        var board = initializeBoard();
+        function initializeBoard() {
+            var board_l = "";
+            for (let i = 0; i < "{{ board }}".length; i++) {
+                if ("{{ board }}"[i] == "_"){
+                    board_l += "\n"; //TODO: See if this is truly necessary
+                } else if ("{{ board }}"[i] != " "){
+                    board_l += "{{ board }}"[i];
+                }
+            }
+            return board_l;
+        }
+        function displayMessage(){
+            alert(board);
+        }
+	    // get reference to button
+        var btn = document.getElementById("submit");
+	    // add event listener for the button, for action "click"
+        btn.addEventListener("click", displayMessage);
+
+        function generatePieces(){
+            console.log("Generating pieces");
+        }
+    </script>
+{% endblock %}

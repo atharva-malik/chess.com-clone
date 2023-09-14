@@ -12,24 +12,32 @@ board.push_san() : move to make
 
 app = Flask(__name__)
 
+def boardToString(board):
+    new_board = ""
+    for i in str(board):
+        if i == "\n":
+            new_board += "_"
+        else:
+            new_board += i
+    return new_board
+
 
 @app.route('/')
-def hello():
-    return render_template('index.html')
+def home():
+    board = chess.Board()
+    return render_template("index.html", board=boardToString(board))
 
 if __name__ == '__main__':
-    #app.run(debug=True)
+    app.run(debug=True)
+    """
     board = chess.Board()
-    print(board.is_checkmate())
-    # FOOL's MATE
-    board.push_san("e4")
-    print(board)
-    board.push_san("g5")
-    print(board)
-    board.push_san("Nc3")
-    print(board)
-    board.push_san("f5")
-    print(board)
-    board.push_san("Qh5")
-    print(board)
-    print(board.is_checkmate())
+    while True:
+        if board.is_checkmate():
+            print("GAME OVER!0")
+            break
+        print(board)
+        try:
+            board.push_san(input("Enter the move: "))
+        except Exception:
+            print("DO A VALID MOVE!")
+    """
