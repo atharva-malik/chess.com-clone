@@ -13,10 +13,17 @@ board.push_san() : move to make
 app = Flask(__name__)
 
 def boardToString(board):
+    board.push_san("e4")
+    board.push_san("e5")
+    board.push_san("Bc4")
+    board.push_san("Nc6")
+    board.push_san("Qh5")
+    board.push_san("Nf6")
+    board.push_san("Qxf7#")
     new_board = ""
     for i in str(board):
-        if i == "\n":
-            new_board += "_"
+        if i == "\n" or i == " ":
+            pass
         else:
             new_board += i
     return new_board
