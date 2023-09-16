@@ -8,7 +8,7 @@
 {% block body %}
     <h1>Chess</h1>
     <br/><br/>
-    <!-- #region -->
+    <!-- #region Chess Board-->
     <!-- Row number 1 -->
     <div class="squareLight" id="A8" style="left: 15px;"></div>
     <p style="position: absolute; top: 110px; left: 20px; color: #eeeed2; font-size: 25px;">8</p>
@@ -97,12 +97,48 @@
     <div class="squareDark" id="H2" style="top: 714px; left: 715px;"></div>
     <div class="squareLight" id="H1" style="top: 814px; left: 715px;"></div>
     <p style="position: absolute; top: 880px; left: 790px; color: #eeeed2; font-size: 25px;">h</p>
-    <!-- endregion -->
-
+    <!-- #endregion -->
+    <!-- #region Black Piece -->
+    <img src="{{ url_for('static',  filename='chesspieces/r.png') }}" alt="Rook" id="blackRookLeft" style="position: absolute; top: 140px; left: 45px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/n.png') }}" alt="Knight" id="blackKnightLeft" style="position: absolute; top: 140px; left: 145px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/b.png') }}" alt="Bishop" id="blackBishopLeft" style="position: absolute; top: 140px; left: 245px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/q.png') }}" alt="Queen" id="blackQueen" style="position: absolute; top: 140px; left: 345px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/k.png') }}" alt="King" id="blackKing" style="position: absolute; top: 140px; left: 445px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/b.png') }}" alt="Bishop" id="blackBishopRight" style="position: absolute; top: 140px; left: 545px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/n.png') }}" alt="Knight" id="blackKnightRight" style="position: absolute; top: 140px; left: 645px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/r.png') }}" alt="Rook" id="blackRookRight" style="position: absolute; top: 140px; left: 745px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/p.png') }}" alt="Pawn" id="blackPawnA" style="position: absolute; top: 240px; left: 45px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/p.png') }}" alt="Pawn" id="blackPawnB" style="position: absolute; top: 240px; left: 145px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/p.png') }}" alt="Pawn" id="blackPawnC" style="position: absolute; top: 240px; left: 245px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/p.png') }}" alt="Pawn" id="blackPawnD" style="position: absolute; top: 240px; left: 345px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/p.png') }}" alt="Pawn" id="blackPawnE" style="position: absolute; top: 240px; left: 445px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/p.png') }}" alt="Pawn" id="blackPawnF" style="position: absolute; top: 240px; left: 545px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/p.png') }}" alt="Pawn" id="blackPawnG" style="position: absolute; top: 240px; left: 645px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/p.png') }}" alt="Pawn" id="blackPawnH" style="position: absolute; top: 240px; left: 745px;"></img>
+    <!-- #endregion -->
+    <!-- #region White Piece -->
+    <img src="{{ url_for('static',  filename='chesspieces/wr.png') }}" alt="Rook" id="whiteRookLeft" style="position: absolute; top: 840px; left: 45px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wn.png') }}" alt="Knight" id="whiteKnightLeft" style="position: absolute; top: 840px; left: 145px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wb.png') }}" alt="Bishop" id="whiteBishopLeft" style="position: absolute; top: 840px; left: 245px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wq.png') }}" alt="Queen" id="whiteQueen" style="position: absolute; top: 840px; left: 345px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wk.png') }}" alt="King" id="whiteKing" style="position: absolute; top: 840px; left: 445px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wb.png') }}" alt="Bishop" id="whiteBishopRight" style="position: absolute; top: 840px; left: 545px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wn.png') }}" alt="Knight" id="whiteKnightRight" style="position: absolute; top: 840px; left: 645px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wr.png') }}" alt="Rook" id="whiteRookRight" style="position: absolute; top: 840px; left: 745px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wp.png') }}" alt="Pawn" id="whitePawnA" style="position: absolute; top: 740px; left: 45px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wp.png') }}" alt="Pawn" id="whitePawnB" style="position: absolute; top: 740px; left: 145px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wp.png') }}" alt="Pawn" id="whitePawnC" style="position: absolute; top: 740px; left: 245px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wp.png') }}" alt="Pawn" id="whitePawnD" style="position: absolute; top: 740px; left: 345px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wp.png') }}" alt="Pawn" id="whitePawnE" style="position: absolute; top: 740px; left: 445px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wp.png') }}" alt="Pawn" id="whitePawnF" style="position: absolute; top: 740px; left: 545px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wp.png') }}" alt="Pawn" id="whitePawnG" style="position: absolute; top: 740px; left: 645px;"></img>
+    <img src="{{ url_for('static',  filename='chesspieces/wp.png') }}" alt="Pawn" id="whitePawnH" style="position: absolute; top: 740px; left: 745px;"></img>
+    <!-- #endregion -->
     <input id="text" style="position: absolute; top: 500px; left: 1000px;"></input>
     <button id="submit" style="position: absolute; top: 500px; left: 1200px;">Submit</button>
     <script>
         // Setup the board
+        var a1 = [840, 45]
         var board = initializeBoard();
         function initializeBoard() {
             var board_l = "";
