@@ -138,7 +138,7 @@
     <button id="submit" style="position: absolute; top: 500px; left: 1200px;">Submit</button>
     <script>
         // Setup the board
-        //var a1 = [840, 45]
+        var max_pawns = 8;
         var board = initializeBoard();
         function initializeBoard() {
             var board_l = "";
@@ -161,15 +161,6 @@
             
             return [ x, y ];
         }
-        /**x = ["45px", "145px", "245px", "345px", "445px", "545px", "645px", "745px"];
-        y = ["140px", "240px", "340px", "440px", "540px", "640px", "740px", "840px"];
-        coordinates = getChessCoordinates(36);
-        alert(y[coordinates[1]]);
-        alert(x[coordinates[0]]);
-        document.getElementById("whitePawn" + 1).style.top = y[coordinates[1]];
-        document.getElementById("whitePawn" + 1).style.left = x[coordinates[0]];
-        //alert(getChessCoordinates(7)[0]);
-        //alert(getChessCoordinates(7)[1]); **/
         loadBoard(board);
         function loadBoard(board){
             console.log("Loading board");
@@ -219,7 +210,7 @@
                     document.getElementById("blackKing").style.top = y[coordinates[1]];
                     document.getElementById("blackKing").style.left = x[coordinates[0]];
                 } else if (board[i] == "p") {
-                    if (pawnCount > 8){
+                    if (pawnCount > max_pawns){
                         pawnCount = 1;
                     }
                     document.getElementById("blackPawn" + pawnCount).style.top = y[coordinates[1]];
@@ -259,7 +250,7 @@
                     document.getElementById("whiteKing").style.top = y[coordinates[1]];
                     document.getElementById("whiteKing").style.left = x[coordinates[0]];
                 } else if (board[i] == "P") {
-                    if (pawnCount > 8){
+                    if (pawnCount > max_pawns){
                         pawnCount = 1;
                     }
                     document.getElementById("whitePawn" + pawnCount).style.top = y[coordinates[1]];
