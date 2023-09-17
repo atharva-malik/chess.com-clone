@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import chess
 
 #region Helpful commands
@@ -9,17 +9,10 @@ board.push_san() : move to make
 """
 #endregion
 
-
+board = chess.Board()
 app = Flask(__name__)
 
 def boardToString(board):
-    board.push_san("e4")
-    board.push_san("e5")
-    board.push_san("Bc4")
-    board.push_san("Nc6")
-    board.push_san("Qh5")
-    board.push_san("Nf6")
-    board.push_san("Qxf7#")
     new_board = ""
     for i in str(board):
         if i == "\n" or i == " ":
@@ -28,11 +21,35 @@ def boardToString(board):
             new_board += i
     return new_board
 
-
 @app.route('/')
-def home():
+def index():
+    global board
     board = chess.Board()
-    return render_template("index.html", board=boardToString(board))
+    return redirect(url_for('home'))
+
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    global board
+    if request.method == 'GET':
+        return render_template("index.html", board=boardToString(board))
+    if request.method == 'POST':
+        square = ""
+        capture = ""
+        if request.form.get('move').lower() == "reset":
+            board = chess.Board()
+            return jsonify(board=boardToString(board))
+        else:
+            if "x" in request.form.get('move'):
+                foundX = False
+                for i in request.form.get('move'):
+                    if i == "x":
+                        foundX = True
+                    elif foundX:
+                        square += i
+                capture = board.piece_at(chess.parse_square(square))
+            board.push_san(request.form.get('move'))
+            print(capture)
+            return jsonify(board=boardToString(board), state="c", capture=str(capture))
 
 if __name__ == '__main__':
     app.run(debug=True)
