@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import chess
+from stockfish import Stockfish
 
 #region Helpful commands
 """ 
@@ -25,7 +26,8 @@ def boardToString(board):
 def index():
     global board
     board = chess.Board()
-    return redirect(url_for('home'))
+    #return redirect(url_for('home'))
+    return redirect(url_for('stockfish'))
 
 @app.route('/home', methods=['GET', 'POST'])
 def home():
@@ -50,6 +52,32 @@ def home():
             board.push_san(request.form.get('move'))
             print(capture)
             return jsonify(board=boardToString(board), state="c", capture=str(capture))
+
+
+@app.route('/stockfish', methods=['GET', 'POST'])
+def stockfish():
+    global board
+    if request.method == 'GET':
+        return render_template("index.html", board=boardToString(board))
+    if request.method == 'POST':
+        square = ""
+        capture = ""
+        if request.form.get('move').lower() == "reset":
+            board = chess.Board()
+            return jsonify(board=boardToString(board))
+        else:
+            if "x" in request.form.get('move'):
+                foundX = False
+                for i in request.form.get('move'):
+                    if i == "x":
+                        foundX = True
+                    elif foundX:
+                        square += i
+                capture = board.piece_at(chess.parse_square(square))
+            board.push_san(request.form.get('move'))
+            print(capture)
+            return jsonify(board=boardToString(board), state="c", capture=str(capture))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
