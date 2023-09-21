@@ -49,8 +49,10 @@ def home():
 def stockfish():
     global board
     stockfish = Stockfish("stockfish/stockfish-windows-x86-64-avx2.exe", parameters={"Threads": 5, "Minimum Thinking Time": 10})
-    stockfish.set_skill_level(1)
+    stockfish.depth = 20
+    #stockfish.depth = 5
     #print(stockfish.get_parameters())
+    stockfish.set_skill_level(10)
     if request.method == 'GET':
         return render_template("stockfish.html", board=boardToString(board))
     if request.method == 'POST':
