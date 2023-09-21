@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>2 Player Chess Game</title>
+    <link rel="stylesheet" href="{{ url_for('static',  filename='style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>Chess</h1>
+    <br/><br/>
+    <!-- #region Chess Board-->
+    <!-- Row number 1 -->
+    <div class="squareLight" id="A8" style="left: 15px;"></div>
+    <p style="position: absolute; top: 110px; left: 20px; color: #eeeed2; font-size: 25px;">8</p>
+    <div class="squareDark" id="A7" style="top: 214px; left: 15px;"></div>
+    <p style="position: absolute; top: 210px; left: 20px; color: #eeeed2; font-size: 25px;">7</p>
+    <div class="squareLight" id="A6" style="top: 314px; left: 15px;"></div>
+    <p style="position: absolute; top: 310px; left: 20px; color: #eeeed2; font-size: 25px;">6</p>
+    <div class="squareDark" id="A5" style="top: 414px; left: 15px;"></div>
+    <p style="position: absolute; top: 410px; left: 20px; color: #eeeed2; font-size: 25px;">5</p>
+    <div class="squareLight" id="A4" style="top: 514px; left: 15px;"></div>
+    <p style="position: absolute; top: 510px; left: 20px; color: #eeeed2; font-size: 25px;">4</p>
+    <div class="squareDark" id="A3" style="top: 614px; left: 15px;"></div>
+    <p style="position: absolute; top: 610px; left: 20px; color: #eeeed2; font-size: 25px;">3</p>
+    <div class="squareLight" id="A2" style="top: 714px; left: 15px;"></div>
+    <p style="position: absolute; top: 710px; left: 20px; color: #eeeed2; font-size: 25px;">2</p>
+    <div class="squareDark" id="A1" style="top: 814px; left: 15px;"></div>
+    <p style="position: absolute; top: 810px; left: 20px; color: #eeeed2; font-size: 25px;">1</p>
+    <p style="position: absolute; top: 880px; left: 90px; color: #eeeed2; font-size: 25px;">a</p>
+    <!-- Row number 2 -->
+    <div class="squareDark" id="B8" style="left: 115px;"></div>
+    <div class="squareLight" id="B7" style="top: 214px; left: 115px;"></div>
+    <div class="squareDark" id="B6" style="top: 314px; left: 115px";></div>
+    <div class="squareLight" id="B5" style="top: 414px; left: 115px;"></div>
+    <div class="squareDark" id="B4" style="top: 514px; left: 115px;"></div>
+    <div class="squareLight" id="B3" style="top: 614px; left: 115px;"></div>
+    <div class="squareDark" id="B2" style="top: 714px; left: 115px;"></div>
+    <div class="squareLight" id="B1" style="top: 814px; left: 115px;"></div>
+    <p style="position: absolute; top: 880px; left: 190px; color: #eeeed2; font-size: 25px;">b</p>
+    <!-- Row number 3 -->
+    <div class="squareLight" id="C8" style="left: 215px;"></div>
+    <div class="squareDark" id="C7" style="top: 214px; left: 215px;"></div>
+    <div class="squareLight" id="C6" style="top: 314px; left: 215px;"></div>
+    <div class="squareDark" id="C5" style="top: 414px; left: 215px;"></div>
+    <div class="squareLight" id="C4" style="top: 514px; left: 215px;"></div>
+    <div class="squareDark" id="C3" style="top: 614px; left: 215px;"></div>
+    <div class="squareLight" id="C2" style="top: 714px; left: 215px;"></div>
+    <div class="squareDark" id="C1" style="top: 814px; left: 215px;"></div>
+    <p style="position: absolute; top: 880px; left: 290px; color: #eeeed2; font-size: 25px;">c</p>
+    <!-- Row number 4 -->
+    <div class="squareDark" id="D8" style="left: 315px;"></div>
+    <div class="squareLight" id="D7" style="top: 214px; left: 315px;"></div>
+    <div class="squareDark" id="D6" style="top: 314px; left: 315px";></div>
+    <div class="squareLight" id="D5" style="top: 414px; left: 315px;"></div>
+    <div class="squareDark" id="D4" style="top: 514px; left: 315px;"></div>
+    <div class="squareLight" id="D3" style="top: 614px; left: 315px;"></div>
+    <div class="squareDark" id="D2" style="top: 714px; left: 315px;"></div>
+    <div class="squareLight" id="D1" style="top: 814px; left: 315px;"></div>
+    <p style="position: absolute; top: 880px; left: 390px; color: #eeeed2; font-size: 25px;">d</p>
+    <!-- Row number 5 -->
+    <div class="squareLight" id="E8" style="left: 415px;"></div>
+    <div class="squareDark" id="E7" style="top: 214px; left: 415px;"></div>
+    <div class="squareLight" id="E6" style="top: 314px; left: 415px;"></div>
+    <div class="squareDark" id="E5" style="top: 414px; left: 415px;"></div>
+    <div class="squareLight" id="E4" style="top: 514px; left: 415px;"></div>
+    <div class="squareDark" id="E3" style="top: 614px; left: 415px;"></div>
+    <div class="squareLight" id="E2" style="top: 714px; left: 415px;"></div>
+    <div class="squareDark" id="E1" style="top: 814px; left: 415px;"></div>
+    <p style="position: absolute; top: 880px; left: 490px; color: #eeeed2; font-size: 25px;">e</p>
+    <!-- Row number 6 -->
+    <div class="squareDark" id="F8" style="left: 515px;"></div>
+    <div class="squareLight" id="F7" style="top: 214px; left: 515px;"></div>
+    <div class="squareDark" id="F6" style="top: 314px; left: 515px";></div>
+    <div class="squareLight" id="F5" style="top: 414px; left: 515px;"></div>
+    <div class="squareDark" id="F4" style="top: 514px; left: 515px;"></div>
+    <div class="squareLight" id="F3" style="top: 614px; left: 515px;"></div>
+    <div class="squareDark" id="F2" style="top: 714px; left: 515px;"></div>
+    <div class="squareLight" id="F1" style="top: 814px; left: 515px;"></div>
+    <p style="position: absolute; top: 880px; left: 590px; color: #eeeed2; font-size: 25px;">f</p>
+    <!-- Row number 7 -->
+    <div class="squareLight" id="G8" style="left: 615px;"></div>
+    <div class="squareDark" id="G7" style="top: 214px; left: 615px;"></div>
+    <div class="squareLight" id="G6" style="top: 314px; left: 615px;"></div>
+    <div class="squareDark" id="G5" style="top: 414px; left: 615px;"></div>
+    <div class="squareLight" id="G4" style="top: 514px; left: 615px;"></div>
+    <div class="squareDark" id="G3" style="top: 614px; left: 615px;"></div>
+    <div class="squareLight" id="G2" style="top: 714px; left: 615px;"></div>
+    <div class="squareDark" id="G1" style="top: 814px; left: 615px;"></div>
+    <p style="position: absolute; top: 880px; left: 690px; color: #eeeed2; font-size: 25px;">g</p>
+    <!-- Row number 8 -->
+    <div class="squareDark" id="H8" style="left: 715px;"></div>
+    <div class="squareLight" id="H7" style="top: 214px; left: 715px;"></div>
+    <div class="squareDark" id="H6" style="top: 314px; left: 715px";></div>
+    <div class="squareLight" id="H5" style="top: 414px; left: 715px;"></div>
+    <div class="squareDark" id="H4" style="top: 514px; left: 715px;"></div>
+    <div class="squareLight" id="H3" style="top: 614px; left: 715px;"></div>
+    <div class="squareDark" id="H2" style="top: 714px; left: 715px;"></div>
+    <div class="squareLight" id="H1" style="top: 814px; left: 715px;"></div>
+    <p style="position: absolute; top: 880px; left: 790px; color: #eeeed2; font-size: 25px;">h</p>
+    <!-- #endregion -->
+    <!-- #region Pieces -->
+    <img src="" alt="" id="1" style="position: absolute; top: 140px; left: 45px;"></img>
+    <img src="" alt="" id="2" style="position: absolute; top: 140px; left: 145px;"></img>
+    <img src="" alt="" id="3" style="position: absolute; top: 140px; left: 245px;"></img>
+    <img src="" alt="" id="4" style="position: absolute; top: 140px; left: 345px;"></img>
+    <img src="" alt="" id="5" style="position: absolute; top: 140px; left: 445px;"></img>
+    <img src="" alt="" id="6" style="position: absolute; top: 740px; left: 745px;"></img>
+    <img src="" alt="" id="7" style="position: absolute; top: 140px; left: 545px;"></img>
+    <img src="" alt="" id="8" style="position: absolute; top: 140px; left: 645px;"></img>
+    <img src="" alt="" id="9" style="position: absolute; top: 140px; left: 745px;"></img>
+    <img src="" alt="" id="10" style="position: absolute; top: 240px; left: 45px;"></img>
+    <img src="" alt="" id="11" style="position: absolute; top: 240px; left: 145px;"></img>
+    <img src="" alt="" id="12" style="position: absolute; top: 240px; left: 245px;"></img>
+    <img src="" alt="" id="13" style="position: absolute; top: 240px; left: 345px;"></img>
+    <img src="" alt="" id="14" style="position: absolute; top: 240px; left: 445px;"></img>
+    <img src="" alt="" id="15" style="position: absolute; top: 240px; left: 545px;"></img>
+    <img src="" alt="" id="16" style="position: absolute; top: 240px; left: 645px;"></img>
+    <img src="" alt="" id="17" style="position: absolute; top: 240px; left: 745px;"></img>
+    <img src="" alt="" id="18" style="position: absolute; top: 840px; left: 45px;"></img>
+    <img src="" alt="" id="19" style="position: absolute; top: 840px; left: 145px;"></img>
+    <img src="" alt="" id="20" style="position: absolute; top: 840px; left: 245px;"></img>
+    <img src="" alt="" id="21" style="position: absolute; top: 840px; left: 345px;"></img>
+    <img src="" alt="" id="22" style="position: absolute; top: 840px; left: 445px;"></img>
+    <img src="" alt="" id="23" style="position: absolute; top: 840px; left: 545px;"></img>
+    <img src="" alt="" id="24" style="position: absolute; top: 840px; left: 645px;"></img>
+    <img src="" alt="" id="25" style="position: absolute; top: 840px; left: 745px;"></img>
+    <img src="" alt="" id="26" style="position: absolute; top: 740px; left: 45px;"></img>
+    <img src="" alt="" id="27" style="position: absolute; top: 740px; left: 145px;"></img>
+    <img src="" alt="" id="28" style="position: absolute; top: 740px; left: 245px;"></img>
+    <img src="" alt="" id="29" style="position: absolute; top: 740px; left: 345px;"></img>
+    <img src="" alt="" id="30" style="position: absolute; top: 740px; left: 445px;"></img>
+    <img src="" alt="" id="31" style="position: absolute; top: 740px; left: 545px;"></img>
+    <img src="" alt="" id="32" style="position: absolute; top: 740px; left: 645px;"></img>
+    <!-- #endregion -->
+    <input id="text" style="position: absolute; top: 500px; left: 1000px;"></input>
+    <button id="submit" style="position: absolute; top: 500px; left: 1200px;">Submit</button>
+    <script>
+        // Setup the board
+        document.getElementById("text").value = "Enter your move here...";
+        var board = initializeBoard("{{ board }}"); loadBoard(board);
+        function initializeBoard(board) {
+            var board_l = "";
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] != " "){
+                    board_l += board[i];
+                }
+            }
+            return board_l;
+        }
+        function getChessCoordinates(squareNumber) {
+            if (squareNumber < 0 || squareNumber > 63) {
+                throw new Error('Invalid square number. Square number must be between 0 and 63.');
+            }
+            
+            const x = squareNumber % 8;
+            const y = Math.floor(squareNumber / 8);
+            
+            return [ x, y ];
+        }
+        function loadBoard(board){
+            console.log("Loading board");
+            count = 1;
+            x = ["45px", "145px", "245px", "345px", "445px", "545px", "645px", "745px"];
+            y = ["140px", "240px", "340px", "440px", "540px", "640px", "740px", "840px"];
+            for (let i = 0; i < board.length; i++){
+                coordinates = getChessCoordinates(i);
+                if (board[i] == "r"){
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/r.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "n"){
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/n.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "b"){
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/b.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "q"){
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/q.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "k"){
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/k.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "p") {
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/p.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "R"){
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/wr.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "N"){
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/wn.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "B"){
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/wb.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "Q"){
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/wq.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "K"){
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/wk.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                } else if (board[i] == "P") {
+                    document.getElementById("" + count).src = "{{ url_for('static', filename='chesspieces/wp.png') }}";
+                    document.getElementById("" + count).style.left = x[coordinates[0]];
+                    document.getElementById("" + count).style.top = y[coordinates[1]];
+                    count++;
+                }
+            }
+            while (count <= 32){
+                document.getElementById("" + count).src = "";
+                count++;
+            }
+        }
+        function displayMessage(message){
+            $.ajax({
+                type: "POST",
+                url: "{{ url_for('stockfish') }}",
+                data: {"move": document.getElementById("text").value},
+                success: function(response) {
+                    // Access the results from the response
+                    var results = response.board;
+                    var state = response.state; // TODO: Use this to determine if the game is over, if it is stalemate, or draw.
+                    var capture = response.capture;
+                    // Update your HTML elements with the results
+                    board = initializeBoard(results);
+                    loadBoard(board);
+                }
+            })
+            document.getElementById("text").value = "";
+        }
+	    // get reference to button
+        var btn = document.getElementById("submit");
+	    // add event listener for the button, for action "click"
+        btn.addEventListener("click", displayMessage);
+        function generatePieces(){
+            console.log("Generating pieces");
+        }
+    </script>
+{% endblock %}

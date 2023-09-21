@@ -7,6 +7,8 @@ from stockfish import Stockfish
 board.legal_moves : list of legal moves for white/black depending on whose turn it is.
 board.is_checkmate() : boolean, tells if game over
 board.push_san() : move to make
+
+
 """
 #endregion
 
@@ -35,48 +37,32 @@ def home():
     if request.method == 'GET':
         return render_template("index.html", board=boardToString(board))
     if request.method == 'POST':
-        square = ""
-        capture = ""
         if request.form.get('move').lower() == "reset":
             board = chess.Board()
             return jsonify(board=boardToString(board))
         else:
-            if "x" in request.form.get('move'):
-                foundX = False
-                for i in request.form.get('move'):
-                    if i == "x":
-                        foundX = True
-                    elif foundX:
-                        square += i
-                capture = board.piece_at(chess.parse_square(square))
             board.push_san(request.form.get('move'))
-            print(capture)
-            return jsonify(board=boardToString(board), state="c", capture=str(capture))
+            return jsonify(board=boardToString(board), state="c")
 
 
 @app.route('/stockfish', methods=['GET', 'POST'])
 def stockfish():
     global board
+    stockfish = Stockfish("stockfish/stockfish-windows-x86-64-avx2.exe", parameters={"Threads": 5, "Minimum Thinking Time": 10})
+    stockfish.set_skill_level(1)
+    #print(stockfish.get_parameters())
     if request.method == 'GET':
-        return render_template("index.html", board=boardToString(board))
+        return render_template("stockfish.html", board=boardToString(board))
     if request.method == 'POST':
-        square = ""
-        capture = ""
         if request.form.get('move').lower() == "reset":
             board = chess.Board()
             return jsonify(board=boardToString(board))
         else:
-            if "x" in request.form.get('move'):
-                foundX = False
-                for i in request.form.get('move'):
-                    if i == "x":
-                        foundX = True
-                    elif foundX:
-                        square += i
-                capture = board.piece_at(chess.parse_square(square))
             board.push_san(request.form.get('move'))
-            print(capture)
-            return jsonify(board=boardToString(board), state="c", capture=str(capture))
+            stockfish.set_fen_position(board.fen())
+            board.push_san(stockfish.get_best_move())
+            return jsonify(board=boardToString(board), state="c")
+            print("Hello")
 
 
 if __name__ == '__main__':
